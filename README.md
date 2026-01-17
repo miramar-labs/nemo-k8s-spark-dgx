@@ -95,12 +95,6 @@ If all goes well, after about 30m you will see:
 
 [INFO] 📖 Documentation: https://docs.nvidia.com/nemo/microservices/
 
-Now you can expose UI over in your Windows laptop:
-
-powershell:
-
-    ./up.ps1
-
 ## UI endpoints (from Windows browser):
 
 ### Minikube dashboard
