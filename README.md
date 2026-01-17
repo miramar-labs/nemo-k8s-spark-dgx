@@ -36,27 +36,30 @@ and to clean up:
 
 If all goes well, after about 30m you will see:
 
-    NAME                                                              READY   STATUS    RESTARTS      AGE
-    modeldeployment-meta-llama-3-1-8b-instruct-dgx-spark-56b767rsjw   1/1     Running   0             62m
-    nemo-core-api-54674f5989-khqrf                                    1/1     Running   0             73m
-    nemo-core-controller-9d9b6b99c-gmrk6                              1/1     Running   1 (66m ago)   73m
-    nemo-core-jobs-logcollector-7787759b6c-ml2ts                      1/1     Running   0             73m
-    nemo-customizer-5949755697-ncdgt                                  1/1     Running   2 (66m ago)   73m
-    nemo-customizerdb-0                                               1/1     Running   0             73m
-    nemo-data-designer-6c6df98589-kkxbf                               1/1     Running   0             73m
-    nemo-data-store-556cb7ff85-fc6b4                                  1/1     Running   0             73m
-    nemo-deployment-management-f489c5d5-725kf                         1/1     Running   0             73m
-    nemo-entity-store-77bb854685-fw9kz                                1/1     Running   0             73m
-    nemo-entity-storedb-0                                             1/1     Running   0             73m
-    nemo-evaluator-7d4d8d6b7-mx9bw                                    2/2     Running   0             73m
-    nemo-evaluatordb-0                                                1/1     Running   0             73m
-    nemo-jobsdb-0                                                     1/1     Running   0             73m
-    nemo-nemo-operator-controller-manager-7bd775c8-fxglj              2/2     Running   0             73m
-    nemo-nim-operator-bbdfdb6cb-4fd6h                                 1/1     Running   0             73m
-    nemo-nim-proxy-b5f6b5765-pnhl8                                    1/1     Running   0             73m
-    nemo-opentelemetry-collector-8f484bdff-7v5bz                      1/1     Running   0             73m
-    nemo-postgresql-0                                                 1/1     Running   0             73m
-
+    NAME                                                              READY   STATUS    RESTARTS       AGE
+    modeldeployment-meta-llama-3-1-8b-instruct-dgx-spark-5d5cbj7dnh   1/1     Running   0              139m
+    nemo-core-api-54674f5989-9kx4d                                    1/1     Running   0              149m
+    nemo-core-controller-9d9b6b99c-cpkqk                              1/1     Running   7 (143m ago)   149m
+    nemo-core-jobs-logcollector-7787759b6c-6967g                      1/1     Running   0              149m
+    nemo-customizer-6bd475bfb4-jnt4p                                  1/1     Running   0              110m
+    nemo-customizerdb-0                                               1/1     Running   0              149m
+    nemo-data-designer-6c6df98589-22srb                               1/1     Running   0              149m
+    nemo-data-store-556cb7ff85-pwzsb                                  1/1     Running   0              149m
+    nemo-deployment-management-f489c5d5-ldlxs                         1/1     Running   0              149m
+    nemo-entity-store-77bb854685-zqvlh                                1/1     Running   0              149m
+    nemo-entity-storedb-0                                             1/1     Running   0              149m
+    nemo-evaluator-7ccf95dc7d-464ss                                   2/2     Running   0              110m
+    nemo-evaluatordb-0                                                1/1     Running   0              149m
+    nemo-jobsdb-0                                                     1/1     Running   0              149m
+    nemo-nemo-operator-controller-manager-7bd775c8-6zb7s              2/2     Running   0              149m
+    nemo-nim-operator-bbdfdb6cb-rtg55                                 1/1     Running   0              149m
+    nemo-nim-proxy-b5f6b5765-t7gcv                                    1/1     Running   0              149m
+    nemo-opentelemetry-collector-8f484bdff-kl8z4                      1/1     Running   0              149m
+    nemo-postgresql-0                                                 1/1     Running   0              149m
+    
+    NAME                              READY   STATUS    RESTARTS   AGE
+    minio-58f6897bd5-v86jm            1/1     Running   0          111m
+    mlflow-tracking-985b69644-v4llm   1/1     Running   0          111m
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [INFO] 🎉 Setup Complete! NeMo Microservices Platform is ready!
