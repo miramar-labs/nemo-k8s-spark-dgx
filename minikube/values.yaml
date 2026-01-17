@@ -1,0 +1,43 @@
+guardrails:
+  enabled: false
+
+studio:
+  enabled: false
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    default:
+      name: nemo.test
+      paths:
+        - path: /v1/deployment
+          pathType: Prefix
+          service: nemo-deployment-management
+          port: 8000
+        # (optional but often useful)
+        - path: /v1/jobs
+          pathType: Prefix
+          service: nemo-core-api
+          port: 8000
+
+    nimProxy:
+      name: nim.test
+      paths:
+        - path: /v1/chat
+          pathType: Prefix
+          service: nemo-nim-proxy
+          port: 8000
+        - path: /v1/completions
+          pathType: Prefix
+          service: nemo-nim-proxy
+          port: 8000
+        - path: /v1/embeddings
+          pathType: Prefix
+          service: nemo-nim-proxy
+          port: 8000
+        - path: /v1/models
+          pathType: Prefix
+          service: nemo-nim-proxy
+          port: 8000
+
