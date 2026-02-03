@@ -9,3 +9,4 @@ lm-eval[api]
 transformers
 ipywidgets
 notebook
+mlflow
