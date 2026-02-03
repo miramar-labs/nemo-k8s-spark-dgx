@@ -18,6 +18,8 @@
 
 [llama-3.1-8b-instruct-dgx-spark](https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.1-8b-instruct-dgx-spark?version=1.0.0-variant)
 
+Get yourself un-gated on the model here:
+
 [meta-llama/llama-3.1-8b-instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
 
 ## Installing NeMo on minikube

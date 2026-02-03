@@ -7,3 +7,5 @@ nemo-microservices
 huggingface_hub
 lm-eval[api]
 transformers
+ipywidgets
+notebook
