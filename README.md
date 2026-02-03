@@ -159,7 +159,7 @@ After deploying the services to minikube, the following service endpoints are av
 
 **Base URL**: http://nemo.test
 
-- This is the main endpoint for interacting with the NeMo microservices platform.
+- This is the main endpoint for interacting with the NeMo microservices platform (REST APIs)
 
 **Nemo Data Store HuggingFace Endpoint**: http://data-store.test/v1/hf
 
