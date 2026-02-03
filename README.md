@@ -12,6 +12,14 @@
 
 [NeMo Microservices](https://docs.nvidia.com/nemo/microservices/latest/get-started/index.html)
 
+[NeMo Demo Cluster on minikube](https://docs.nvidia.com/nemo/microservices/25.12.0/get-started/index.html)
+
+[NGC Catalog](https://catalog.ngc.nvidia.com/)
+
+[llama-3.1-8b-instruct-dgx-spark](https://catalog.ngc.nvidia.com/orgs/nim/teams/meta/containers/llama-3.1-8b-instruct-dgx-spark?version=1.0.0-variant)
+
+[meta-llama/llama-3.1-8b-instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
+
 ## Installing NeMo on minikube
 
 Create a pyenv virtual environment and activate it
@@ -144,3 +152,58 @@ spark:
 
     ./down.sh
 
+## Service Endpoints (from SSH terminal)
+After deploying the services to minikube, the following service endpoints are available:
+
+**Base URL**: http://nemo.test
+
+- This is the main endpoint for interacting with the NeMo microservices platform.
+
+**Nemo Data Store HuggingFace Endpoint**: http://data-store.test/v1/hf
+
+- The Data Store microservice exposes a HuggingFace-compatible API at this endpoint.
+
+- Set the HF_ENDPOINT environment variable to this URL.
+
+        export HF_ENDPOINT=http://data-store.test/v1/hf
+
+**Inference URL**: http://nim.test
+
+- This is the endpoint for the NIM Proxy microservice deployed as a part of the platform.
+
+## Python Client SDK
+
+    pip install nemo-microservices
+
+Test Synchronous Client:
+
+    from nemo_microservices import NeMoMicroservices
+
+    # Initialize the client
+    client = NeMoMicroservices(
+        base_url="http://nemo.test",
+        inference_base_url="http://nim.test"
+    )
+
+    # List namespaces
+    namespaces = client.namespaces.list()
+    print(namespaces.data)
+
+Test Asynchronous Client:
+
+    import asyncio
+    from nemo_microservices import AsyncNeMoMicroservices
+
+    async def main():
+        # Initialize the async client
+        client = AsyncNeMoMicroservices(
+            base_url="http://nemo.test",
+            inference_base_url="http://nim.test"
+        )
+        
+        # List namespaces
+        namespaces = await client.namespaces.list()
+        print(namespaces.data)
+
+    # Run the async function
+    asyncio.run(main())

@@ -5,3 +5,5 @@ datasets
 jupyterlab
 nemo-microservices
 huggingface_hub
+lm-eval[api]
+transformers
