@@ -22,6 +22,11 @@ Get yourself un-gated on the model here:
 
 [meta-llama/llama-3.1-8b-instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
 
+SDK Docs
+
+[Python SDK](https://docs.nvidia.com/nemo/microservices/latest/pysdk/index.html)
+
+[Microservice APIs](https://docs.nvidia.com/nemo/microservices/latest/api/index.html)
 ## Installing NeMo on minikube
 
 Create a pyenv virtual environment and activate it
