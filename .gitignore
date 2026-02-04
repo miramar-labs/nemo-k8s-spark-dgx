@@ -3,3 +3,5 @@ archive*
 law-*
 .ipynb_checkpoints
 results.json
+__pycache__
+eval-*
