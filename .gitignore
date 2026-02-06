@@ -5,3 +5,4 @@ law-*
 results.json
 __pycache__
 eval-*
+results_*.json
