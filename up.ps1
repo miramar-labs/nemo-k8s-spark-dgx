@@ -50,7 +50,7 @@ Get-NetTCPConnection -State Listen -LocalPort 8001,5000,8888 -ErrorAction Silent
 
 $resp = Read-Host "Press Y/y to launch UI's in browser"
 if ($resp -match '^[Yy]$') {
-	Start-Process "http://127.0.0.1:8001"
+	Start-Process "http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads?namespace=default"
 	Start-Process "http://127.0.0.1:5000"
 	Start-Process "http://127.0.0.1:8888/lab"
 } else {
