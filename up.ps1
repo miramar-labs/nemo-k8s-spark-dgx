@@ -47,3 +47,11 @@ Write-Host ("stderr log: {0}" -f $errLog)
 
 Get-NetTCPConnection -State Listen -LocalPort 8001,5000,8888 -ErrorAction SilentlyContinue |
   Select-Object LocalAddress,LocalPort,OwningProcess
+
+if ($resp -match '^[Yy]$') {
+	StartProcess "http://127.0.0.1:8001"
+	StartProcess "http://127.0.0.1:5000"
+	StartProcess "http://127.0.0.1:8888/lab"
+} else {
+    Write-Host "Cancelled. Not launching browser."
+}
