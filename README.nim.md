@@ -1,10 +1,15 @@
 # NIM Notes
 
+list NIMs:
+
+    curl -sS http://nim.test/v1/models | jq .
+
+
 deploy a NIM:
 
     source ./deploy_nim.sh && deploy_nim meta llama-3.1-8b-instruct-dgx-spark 1.0.0-variant
 
-undeploy NIM:
+undeploy a NIM:
 
     source ./undeploy_nim.sh && undeploy_nim meta llama-3.1-8b-instruct-dgx-spark
 
@@ -21,3 +26,5 @@ undeploy NIM:
     source ./deploy_nim.sh && deploy_nim nvidia nvidia-nemotron-nano-9b-v2-dgx-spark 1.0.0-variant
 
     source ./undeploy_nim.sh && undeploy_nim nvidia nvidia-nemotron-nano-9b-v2-dgx-spark
+
+(this one has tools enabled!)
