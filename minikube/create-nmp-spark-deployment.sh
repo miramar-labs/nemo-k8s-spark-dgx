@@ -1080,50 +1080,6 @@ configure_dns() {
   log "  • nemo.test → $minikube_ip"
 }
 
-# === Phase 6: Deploy NIM ===
-deploy_nim() {
-  local nim_api_namespace="${1:?namespace required}"
-  local nim_name="${2:?name required}"
-  local image_tag="${3:?tag required}"
-
-  log "Requesting deployment of $nim_name NIM..."
-
-  local body http
-  body="$(curl -sS -w '\n%{http_code}' \
-    --connect-timeout 10 \
-    --max-time 30 \
-    --location "http://nemo.test/v1/deployment/model-deployments" \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/json' \
-    -d "{
-      \"name\": \"${nim_name}\",
-      \"namespace\": \"${nim_api_namespace}\",
-      \"config\": {
-        \"model\": \"${nim_api_namespace}/${nim_name}\",
-        \"nim_deployment\": {
-          \"image_name\": \"nvcr.io/nim/${nim_api_namespace}/${nim_name}\",
-          \"image_tag\": \"${image_tag}\",
-          \"pvc_size\": \"25Gi\",
-          \"gpu\": 1,
-          \"additional_envs\": {
-            \"NIM_GUIDED_DECODING_BACKEND\": \"fast_outlines\"
-          }
-        }
-      }
-    }" || true)"
-
-  http="${body##*$'\n'}"
-  body="${body%$'\n'*}"
-
-  if [[ ! "$http" =~ ^[0-9]+$ ]] || (( http < 200 || http >= 300 )); then
-    err "NIM deploy request failed (HTTP ${http:-unknown}). Response:"
-    printf '%s\n' "${body:-<empty>}" >&2
-    die "Failed to submit NIM deployment request for $nim_name."
-  fi
-
-  log "NIM deployment request for $nim_name submitted."
-}
-
 # === Phase 7: Wait for NIM Readiness ===
 wait_for_nim() {
   local nim_api_namespace="${1:?namespace required}"
@@ -1310,6 +1266,9 @@ main() {
   configure_dns
 
   # Correct bash function call syntax (no parentheses/commas)
+  # Load deploy_nim() from external file
+  source "$(dirname "${BASH_SOURCE[0]}")/../deploy_nim.sh"
+
   deploy_nim "meta" "llama-3.1-8b-instruct-dgx-spark" "1.0.0-variant"
   wait_for_nim "meta" "llama-3.1-8b-instruct-dgx-spark"
   verify_nim_endpoint
