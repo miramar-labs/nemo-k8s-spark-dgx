@@ -16,6 +16,9 @@ die() {
 _xtrace_push() { __XTRACE_WAS_ON=0; case "$-" in *x*) __XTRACE_WAS_ON=1; set +x ;; esac; }
 _xtrace_pop()  { (( ${__XTRACE_WAS_ON:-0} )) && set -x; unset __XTRACE_WAS_ON; }
 
+# Kubernetes namespace for NIM pods; inherits from parent script or defaults to "default"
+NAMESPACE="${NAMESPACE:-default}"
+
 # === Phase 6: Deploy NIM ===
 # USAGE:
 # source ./deploy_nim.sh && deploy_nim meta llama-3.1-8b-instruct-dgx-spark 1.0.0-variant

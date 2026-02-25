@@ -63,7 +63,7 @@ fi
 log "Removing /etc/hosts backup files..."
 backup_count=$(maybe_sudo find /etc -name "hosts.backup.*" 2>/dev/null | wc -l)
 if [[ $backup_count -gt 0 ]]; then
-  maybe_sudo rm -f /etc/hosts.backup.* 2>/dev/null || true
+  maybe_sudo find /etc -maxdepth 1 -name "hosts.backup.*" -delete 2>/dev/null || true
   log "✓ Removed $backup_count backup file(s)"
 else
   log "No backup files found"

@@ -64,6 +64,11 @@ def unzip_file(zip_file_path, extract_to="."):
     os.makedirs(extract_folder, exist_ok=True)
 
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+        extract_folder_real = os.path.realpath(extract_folder)
+        for member in zip_ref.infolist():
+            target = os.path.realpath(os.path.join(extract_folder, member.filename))
+            if not target.startswith(extract_folder_real + os.sep) and target != extract_folder_real:
+                raise ValueError(f"Zip entry '{member.filename}' would extract outside target directory")
         zip_ref.extractall(extract_folder)
 
     logger.info(f"Extracted {zip_file_path} to {extract_folder}")
